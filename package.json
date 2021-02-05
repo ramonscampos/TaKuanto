@@ -9,11 +9,17 @@
     "test": "jest",
     "lint": "eslint ."
   },
+  "rnpm": {
+    "assets": [
+      "./src/assets/fonts"
+    ]
+  },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.9.2",
     "@react-navigation/stack": "^5.14.2",
+    "intl": "^1.2.5",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-currency-input": "^0.1.3",
@@ -22,6 +28,7 @@
     "react-native-masked-text": "^1.13.0",
     "react-native-reanimated": "^1.13.2",
     "react-native-safe-area-context": "^3.1.9",
+    "react-native-scalable-image": "^1.0.0",
     "react-native-screens": "^2.17.1",
     "styled-components": "^5.2.1",
     "uuid": "^8.3.2"

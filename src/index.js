@@ -2,15 +2,17 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { View, StatusBar } from 'react-native';
 
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
+
 import Routes from './routes';
 import AppContainer from './hooks';
-import { colors } from './styles/index';
 
 function App() {
   return (
     <View style={{ flex: 1 }}>
       <AppContainer>
-        <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
+        <StatusBar barStyle="dark-content" backgroundColor="white" />
         <Routes />
       </AppContainer>
     </View>

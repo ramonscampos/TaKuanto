@@ -8,7 +8,7 @@ import { Container, BackButton, ResetButton } from './styles';
 function Home({ navigation }) {
   const { drinks, reset } = useDrink();
   const [sorted] = useState(
-    drinks.sort((a, b) => a.pricePerLiter < b.pricePerLiter),
+    drinks.sort((a, b) => a.pricePerLiter > b.pricePerLiter),
   );
 
   return (

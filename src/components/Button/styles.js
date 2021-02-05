@@ -1,11 +1,33 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
+import { colors } from '~/styles/index';
 
 export const Container = styled.TouchableOpacity`
-  border: 1px solid black;
-  border-radius: 4px;
+  border-radius: 15px;
   padding: 5px;
   justify-content: center;
   align-items: center;
+  height: 60px;
+  background: ${colors.secondary};
+  flex-direction: row;
+
+  ${(props) => {
+    if (props.type === 'inverse') {
+      return css`
+        background: rgba(123, 147, 28, 0.1);
+      `;
+    }
+  }}
 `;
 
-export const Text = styled.Text``;
+export const Text = styled.Text`
+  font-family: 'Poppins-Bold';
+  color: #fff;
+
+  ${(props) => {
+    if (props.type === 'inverse') {
+      return css`
+        color: ${colors.secondary};
+      `;
+    }
+  }}
+`;

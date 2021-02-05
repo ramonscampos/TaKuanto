@@ -3,43 +3,64 @@ import React from 'react';
 import { useDrink } from '~/hooks/drinks';
 import DrinkCard from '~/components/DrinkCard';
 
-import { Container, NewDrinkButton, CompareButton, ClearLink } from './styles';
+import {
+  Container,
+  ScrollView,
+  Logo,
+  HomeImage,
+  NewDrinkButton,
+  BottleIcon,
+  Footer,
+  CompareButton,
+  CompareIcon,
+  ClearLinkButton,
+  ClearLinkText,
+} from './styles';
 
 function Home({ navigation }) {
   const { drinks, reset } = useDrink();
 
   return (
     <Container>
-      <NewDrinkButton
-        onPress={() => {
-          navigation.push('Drink');
-        }}>
-        Adicionar bebida
-      </NewDrinkButton>
+      <ScrollView>
+        <Logo />
+        <HomeImage />
 
-      {drinks.map((drink) => (
-        <DrinkCard
-          key={drink.id}
-          onPress={() => navigation.push('Drink', { drink })}
-          drink={drink}
-        />
-      ))}
+        <NewDrinkButton
+          Icon={BottleIcon}
+          type="inverse"
+          onPress={() => {
+            navigation.push('Drink');
+          }}>
+          +Adicionar bebida
+        </NewDrinkButton>
 
-      <CompareButton
-        onPress={() => {
-          navigation.push('Result');
-        }}>
-        Comparar
-      </CompareButton>
+        {drinks.map((drink) => (
+          <DrinkCard
+            key={drink.id}
+            onPress={() => navigation.push('Drink', { drink })}
+            drink={drink}
+          />
+        ))}
+      </ScrollView>
+      <Footer>
+        <CompareButton
+          Icon={CompareIcon}
+          onPress={() => {
+            navigation.push('Result');
+          }}>
+          Comparar!
+        </CompareButton>
 
-      {!!drinks.length && (
-        <ClearLink
+        {/* {!!drinks.length && ( */}
+        <ClearLinkButton
           onPress={() => {
             reset();
           }}>
-          Limpar
-        </ClearLink>
-      )}
+          <ClearLinkText>Limpar tudo</ClearLinkText>
+        </ClearLinkButton>
+        {/* )} */}
+      </Footer>
     </Container>
   );
 }

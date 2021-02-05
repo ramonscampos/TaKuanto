@@ -1,10 +1,11 @@
 import React from 'react';
 import { Container, Text } from './styles';
 
-function Button({ children, ...rest }) {
+function Button({ type = 'default', children, Icon, ...rest }) {
   return (
-    <Container {...rest}>
-      <Text>{children}</Text>
+    <Container type={type} {...rest}>
+      {!!Icon && <Icon />}
+      <Text type={type}>{children}</Text>
     </Container>
   );
 }

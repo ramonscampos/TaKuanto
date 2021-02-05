@@ -3,6 +3,7 @@ module.exports = {
   extends: '@react-native-community',
   rules: {
     'react-native/no-inline-styles': 'off',
+    'ts-styled-plugin': 'off',
   },
   settings: {
     'import/resolver': {

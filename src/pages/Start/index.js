@@ -1,7 +1,16 @@
 import React, { useCallback } from 'react';
 import { CommonActions } from '@react-navigation/native';
 
-import { Container, StartButton } from './styles';
+import {
+  Container,
+  Card,
+  BottomCard,
+  Logo,
+  EmptyCartImage,
+  EmptyCartText,
+  CartIcon,
+  StartButton,
+} from './styles';
 
 function Start({ navigation }) {
   const handleNavigate = useCallback(() => {
@@ -20,7 +29,16 @@ function Start({ navigation }) {
 
   return (
     <Container>
-      <StartButton onPress={handleNavigate}>Começar</StartButton>
+      <Card>
+        <Logo />
+        <EmptyCartImage />
+        <EmptyCartText>Seu carrinho está vazio :(</EmptyCartText>
+      </Card>
+      <BottomCard>
+        <StartButton Icon={CartIcon} onPress={handleNavigate}>
+          Começar a comparar!
+        </StartButton>
+      </BottomCard>
     </Container>
   );
 }

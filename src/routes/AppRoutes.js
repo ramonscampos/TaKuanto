@@ -12,7 +12,7 @@ const AppRoutes = () => (
   <Stack.Navigator
     screenOptions={{
       headerShown: false,
-      cardStyle: { backgroundColor: '#EBEEF8' },
+      cardStyle: { backgroundColor: 'white' },
     }}
     initialRouteName="Start">
     <Stack.Screen name="Start" component={Start} />
