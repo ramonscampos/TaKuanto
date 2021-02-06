@@ -15,7 +15,13 @@ const AppRoutes = () => (
       cardStyle: { backgroundColor: 'white' },
     }}
     initialRouteName="Start">
-    <Stack.Screen name="Start" component={Start} />
+    <Stack.Screen
+      name="Start"
+      component={Start}
+      options={{
+        animationEnabled: false,
+      }}
+    />
     <Stack.Screen name="Home" component={Home} />
     <Stack.Screen name="Drink" component={Drink} />
     <Stack.Screen name="Result" component={Result} />

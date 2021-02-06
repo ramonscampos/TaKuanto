@@ -16,6 +16,12 @@ export const Container = styled.TouchableOpacity`
         background: rgba(123, 147, 28, 0.1);
       `;
     }
+
+    if (props.disabled) {
+      return css`
+        background: ${colors.dark};
+      `;
+    }
   }}
 `;
 

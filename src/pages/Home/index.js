@@ -32,7 +32,7 @@ function Home({ navigation }) {
           onPress={() => {
             navigation.push('Drink');
           }}>
-          +Adicionar bebida
+          + Adicionar bebida
         </NewDrinkButton>
 
         {drinks.map((drink) => (
@@ -45,6 +45,7 @@ function Home({ navigation }) {
       </ScrollView>
       <Footer>
         <CompareButton
+          disabled={drinks.length < 2}
           Icon={CompareIcon}
           onPress={() => {
             navigation.push('Result');
@@ -52,14 +53,13 @@ function Home({ navigation }) {
           Comparar!
         </CompareButton>
 
-        {/* {!!drinks.length && ( */}
         <ClearLinkButton
+          disabled={!drinks.length}
           onPress={() => {
             reset();
           }}>
-          <ClearLinkText>Limpar tudo</ClearLinkText>
+          <ClearLinkText disabled={!drinks.length}>Limpar tudo</ClearLinkText>
         </ClearLinkButton>
-        {/* )} */}
       </Footer>
     </Container>
   );
