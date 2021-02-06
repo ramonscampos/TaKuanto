@@ -5,7 +5,7 @@ import EditSrc from '~/assets/images/edit.png';
 import { colors } from '~/styles/index';
 
 export const Container = styled.TouchableOpacity`
-  border: 1.5px solid #d7d7d7;
+  border: 1.5px solid #d7d7d777;
   border-radius: 4px;
   flex-direction: row;
   justify-content: space-between;

@@ -1,12 +1,22 @@
 import React, { useCallback, useState } from 'react';
+
+import Modal from '~/components/Modal';
 import { useDrink } from '~/hooks/drinks';
 import {
   Container,
-  InsertButton,
+  HeaderContent,
   BackButton,
+  BackSymbol,
+  Title,
+  Content,
+  InsertButton,
+  RemoveButton,
   Description,
   Volume,
   Price,
+  BottleIcon,
+  TrashIcon,
+  ButtonsContainer,
 } from './styles';
 
 function Drink({ navigation, route }) {
@@ -14,7 +24,7 @@ function Drink({ navigation, route }) {
   const [description, setDescription] = useState(drink?.description || '');
   const [volume, setVolume] = useState(drink?.volume || '');
   const [price, setPrice] = useState(drink?.price || '');
-  const { addDrink, updateDrink } = useDrink();
+  const { drinks, addDrink, updateDrink } = useDrink();
 
   const handleInsert = useCallback(() => {
     if (!drink) {
@@ -27,39 +37,56 @@ function Drink({ navigation, route }) {
 
   return (
     <Container>
-      <Description
-        placeholder="Descrição"
-        value={description}
-        onChangeText={(value) => setDescription(value)}
-      />
+      <HeaderContent>
+        <BackButton
+          onPress={() => {
+            navigation.goBack();
+          }}>
+          <BackSymbol>{'<'}</BackSymbol>
+        </BackButton>
+        <Title>{drink ? 'Editar' : 'Adicionar'} bebida</Title>
+      </HeaderContent>
 
-      <Volume
-        type="custom"
-        mask={'9999'}
-        maxLength={4}
-        placeholder="Volume (ml)"
-        value={volume}
-        onChangeText={(value) => setVolume(value)}
-      />
+      <Content>
+        <Description
+          placeholder="Descrição"
+          value={description}
+          onChangeText={(value) => setDescription(value)}
+        />
 
-      <Price
-        type="currency"
-        placeholder="Preço"
-        value={price}
-        unit="R$ "
-        maxLength={9}
-        onChangeValue={(value) => setPrice(value)}
-      />
+        <Volume
+          type="custom"
+          mask={'9999'}
+          maxLength={4}
+          placeholder="Volume (ml)"
+          value={volume}
+          onChangeText={(value) => setVolume(value)}
+        />
 
-      <InsertButton onPress={handleInsert}>
-        {drink ? 'Salvar' : 'Inserir'}
-      </InsertButton>
-      <BackButton
-        onPress={() => {
-          navigation.goBack();
-        }}>
-        Voltar
-      </BackButton>
+        <Price
+          type="currency"
+          placeholder="Preço"
+          value={price}
+          unit="R$ "
+          maxLength={9}
+          onChangeValue={(value) => setPrice(value)}
+        />
+      </Content>
+
+      <ButtonsContainer>
+        <InsertButton Icon={BottleIcon} onPress={handleInsert}>
+          {drink ? 'Salvar bebida' : 'Adicionar bebida'}
+        </InsertButton>
+        <RemoveButton
+          Icon={TrashIcon}
+          onPress={() => {
+            navigation.goBack();
+          }}>
+          Remover
+        </RemoveButton>
+      </ButtonsContainer>
+
+      <Modal visible={true} />
     </Container>
   );
 }

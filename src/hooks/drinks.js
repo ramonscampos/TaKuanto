@@ -38,8 +38,8 @@ const DrinkProvider = ({ children }) => {
 
   const addDrink = useCallback(async (drink) => {
     setDrinks((currentDrinks) => [
-      ...currentDrinks,
       { id: uuidv4(), pricePerLiter: calcPricePerLiter(drink), ...drink },
+      ...currentDrinks,
     ]);
   }, []);
 
